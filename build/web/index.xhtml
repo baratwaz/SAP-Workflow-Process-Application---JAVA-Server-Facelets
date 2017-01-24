@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Supplier's Home</title>
+        <meta name="viewport" content="width=device-width, initiall-scale=1"/>
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+        <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+    </h:head>
+    <h:body styleClass="contentPage" onload="#{searchBean.loadAllPending()}">
+        <h:form id="supplierform">  
+        <div align="right" style="font-size: 25px">
+             <h:outputLabel value="Welcome #{login.username}" style="margin-right: 50px"/>
+             <h:commandLink value="Logout" action="#{searchBean.logout()}" style="color: lightskyblue"/>
+         </div>
+            <h1 id="H1title"> Supplier Search Page</h1>
+            <br></br>
+            <table id="SearchTable"  >
+                <tr>
+                    <td><h:outputText value="Supplier Name:"/></td>
+                    <td><h:inputText id="inputName" value="#{searchBean.supplier}" />
+                    </td>
+                    <td width="100px"> </td>
+                    <td><h:outputText value="PO Number:" /></td>
+                    <td><h:inputText id="PONumber"   p:placeholder="Search!!" value="#{searchBean.ponumber}" /></td>
+                </tr>
+                <tr style="height:10px"></tr>
+                <tr>
+                    <td><h:outputText value="Buyer Name:"/></td>
+                    <td><h:inputText id="BuyerName" value="#{searchBean.buyer}" />
+                    </td>
+                    <td width="100px"> </td>
+                    <td><h:outputText value="Status:"/></td>
+                    <td><h:selectOneMenu  id="statusMenu" value="#{searchBean.status}" >
+                                <f:selectItem itemValue=""></f:selectItem>
+                                <f:selectItem itemValue="Pending"></f:selectItem>
+                                <f:selectItem itemValue="Approved"></f:selectItem>
+                                <f:selectItem itemValue="Rejected"></f:selectItem>
+                                <f:ajax execute="@this" render="statusMenu"></f:ajax>
+                        </h:selectOneMenu></td>
+                </tr>
+                <tr style="height:10px"></tr>
+                <tr>
+                    <td><h:outputText value="Date"/></td>
+                    <td><h:inputText id="POdate" value="#{searchBean.podate}"/></td>
+                </tr>
+                <tr style="height:20px"></tr>
+            </table>
+            <br/>
+            <h:commandButton id="searchbtn" value="Search" action="#{searchBean.SearchPurchaseOrders()}" styleClass="button">
+                <f:ajax execute="@form" render="datatab"/>
+            </h:commandButton>
+            <br/><br/>
+            <h:dataTable
+                value="#{searchBean.polist}"      
+                var="p" styleClass="dataTableStyle"  
+                rowClasses="RowStyle" 
+                columnClasses="ColStyle" 
+                headerClass="HeaderStyle" id="datatab">
+                <h:column>
+                    <f:facet name="header">Purchase Order</f:facet>
+                        #{p.POID}
+                </h:column >
+                <h:column>
+                    <f:facet name="header">Supplier Name</f:facet>
+                        #{p.supplierName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Buyer Name</f:facet>
+                        #{p.buyerName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                        #{p.status}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandLink style="color:black" action="#{searchBean.sortByDate()}">
+                              Created Date
+                             <f:ajax execute="@form" render="datatab" />
+                        </h:commandLink>
+                        
+                    </f:facet>
+                        #{p.createdDate}
+                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Check"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox id="oneID" value="#{searchBean.singleselect}" onclick="#{searchBean.processSinglePO(p.POID)}"/>  
+                </h:column>
+            </h:dataTable>
+            <br/><br/>
+            <h:commandButton value="Process" id ="processbutton" action="#{searchBean.processSelectedPO()}" styleClass="processButton">
+            </h:commandButton>
+            <h:commandButton value="Process All" action="#{searchBean.processAllPO()}" styleClass="processButton1"></h:commandButton>  
+        </h:form>
+    </h:body>
+</html>
+

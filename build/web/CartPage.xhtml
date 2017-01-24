@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cart</title>
+     <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+    </h:head>
+    <h:body id="buyerBody">
+          <h:form>
+              
+              <div align="right" style="background-color:grey; font-size: 25px">
+                 <h:outputLabel value="Welcome #{login.username}," style="margin-right: 20px"/>
+                 <h:commandLink value="Logout" action="#{order.logout()}" style="color: lightskyblue"/>
+             </div>
+              <div style="background-color: gray;height:50px;"> <span style=" font-size: 30px;font-family: verdana;text-align:center;margin-left: 50px">Shopping Cart</span></div>
+             <div style="margin-top: 200px;">
+                 <h:dataTable id="product" value="#{order.addpo}" var="prod" border="1">
+                    <h:column>
+                        <f:facet name="header">Product Name</f:facet>
+                        #{prod.item_name}
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">Product Description</f:facet>
+                        #{prod.item_description}
+                    </h:column>
+                  <h:column>
+                      <f:facet name="header">Supplier Name</f:facet>
+                        #{prod.supplier_name}
+                    </h:column>
+                   <h:column>
+                            <f:facet name="header"> Quantity </f:facet>
+                            <h:inputText value="#{prod.quantity}"/>
+                        </h:column>
+                    <h:column>
+                        <f:facet name="header">Item Price</f:facet>
+                        #{prod.item_price}
+                    </h:column>
+                </h:dataTable>
+            </div>
+              <br/>
+              <h:commandButton id="createpo" value="Create PO" style="margin-left: 250px;" action="#{order.CreatePo()}" onclick="alert('PO has been Created Successfully')"/>
+            </h:form>
+    </h:body>
+</html>
+

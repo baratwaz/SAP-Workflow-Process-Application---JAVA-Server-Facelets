@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+<h:head>
+        <title>Login Page</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+        
+        <!-- For Bootstrap - Start -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <scripts>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+         </scripts>
+        <!-- For Bootstrap - End -->
+        
+         <h3  style="text-align: center"><img class="headerImage" src="resources/css/images/images.jpg" alt=""></img></h3>         
+</h:head>  
+<h:body id="loginBody">
+ <div id="space">
+ <h:form>
+            <table cellpadding="0" width="100%" height="500" cellspacing="0" border="0" class="backgr" >
+		<tr valign="top">
+		<td>
+		<table cellpadding="0" width="75%" align="center" cellspacing="0" border="0" class="backgrinner">
+            <tr>
+			
+		<td align="center"   class="heardert">
+		<table cellpadding="0" cellspacing="0" border="0" >
+		<tr>
+		<td align="left">&nbsp;&nbsp;&nbsp;
+		</td>
+		<td align="right"  class="heardert">
+		Login Your SAP Account!
+                
+		</td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="2" align="center" class="test">
+            
+		</td>
+		</tr>
+		<tr>
+		<td  colspan="2" align="center" class="titlet"> 
+		<table cellpadding="0" align="center" cellspacing="0" border="0">
+		<tr>
+		<td colspan="2" class="textstyle">
+                     <br></br>
+                <br></br>
+                <br></br>
+		Please enter your User Name:
+		</td>
+            <td align="center">
+                 <br></br>
+                <br></br>
+                <br></br>
+               
+                <h:inputText id="username" required ="true" 
+                             requiredMessage="The Username field cannot be empty"
+                        title="Please enter your UserName"
+                        value="#{login.username}">
+                </h:inputText>
+             <h:message for="username" style="color:red"></h:message>
+
+            </td>
+            </tr>
+             <tr>
+		<td colspan="2">&nbsp;
+		</td>
+		</tr>
+			<tr>
+                         <td colspan="2" class="textstyle">   
+            </td>
+            </tr>
+            <tr>
+		<td colspan="2">&nbsp;
+		</td>
+		</tr>
+             <tr>
+		<td colspan="2" class="textstyle">
+		Please enter your Password:
+		</td>
+            <td align="center">
+                <h:inputSecret id="password" required ="true" 
+                          requiredMessage="The password field cannot be empty"
+                        title="Please enter your psw"
+                        value="#{login.password}" styleClass="textbox">               
+                </h:inputSecret>
+                <h:message for="password" style="color:red"></h:message>
+            </td>
+            </tr>
+            <tr>
+		<td colspan="2">&nbsp;
+		</td>
+		</tr>
+			<tr>
+			<td colspan="4" align="center">&nbsp;
+                            
+                            <h:commandButton id="submit" value="Submit" class="btn btn-primary"
+                                             action="#{login.log()}" style="margin-left: 80px"/>
+                            <h:commandButton id="clear" value="Clear" class="btn btn-primary" immediate="true"
+                                                     action="login.xhtml" style="margin-left: 20px"/>
+                            <br/><br/> 
+                             <h:outputText value="#{register.message}" style="color:green;margin-left:108px;"></h:outputText>
+                       &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; 
+
+            </td>
+			</tr>
+                    <tr>
+                        <td style="margin-left: 50px"><h:outputLabel value="#{login.loginNotok()}"/></td>
+                    </tr>
+			<tr>
+			<td colspan="2" align="center">&nbsp;&nbsp;
+            &nbsp;&nbsp;<h:commandLink  id = "signup" value = "New User? Sign-up here" immediate="true"  action = "Register.xhtml" ></h:commandLink> &nbsp;&nbsp;  <h:commandLink id = "forgotPwd" value = "Forgot Password" immediate="true"  action = "forgotPwd.xhtml"></h:commandLink>
+                        </td>
+                        </tr>
+			</table>
+	</td>			
+		</tr>
+	</table>
+	</td>
+</tr>
+                 
+                 
+                    
+</table>
+     
+        </h:form>
+     </div>  
+     <footer style="text-align: center">    
+             <img src="resources/css/images/239139_UHCL_mascot1_7e0a093e-f3c7-44a7-9186-069e80a1d13d-prv.jpg" style="height:100px;width:100px;"/> 
+             <p>Copyright © 2016 - Java Group-4</p>
+             <p>ISAM5638, Tuesday,Thursday Class - Summer 2016</p>         
+     </footer>
+</h:body>
+</html>

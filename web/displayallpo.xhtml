@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Supplier's Home</title>
+        <meta name="viewport" content="width=device-width, initiall-scale=1"/>
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+        <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+    </h:head>
+    <h:body id="displayallBody" onload="#{searchBean.displayAllApprovedPO()}">
+        <h:form> 
+            <div align="right" style="font-size: 25px">
+            <h:outputLabel value="Welcome #{login.username}" style="margin-right: 50px"/>
+            <h:commandLink value="Home" action="#{searchBean.home()}" style="color: lightskyblue; margin-right: 20px"/>
+             <h:commandLink value="Logout" action="#{searchBean.logout()}" style="color: lightskyblue"/>
+            </div>
+            <h1 id="displayallTitle">All Purchase Orders Displayed Here!!</h1>
+            <h:dataTable rows="#{searchBean.polist.size()}"
+                         value="#{searchBean.polist}"      
+                         var="p" styleClass="displayallTable"  
+                         rowClasses="RowallStyle" 
+                         columnClasses="ColallStyle" 
+                         headerClass="displayallHeader">
+                <h:column>
+                    <f:facet name="header">Purchase Order</f:facet>
+                        #{p.POID}
+                </h:column >
+                <h:column>
+                    <f:facet name="header">Supplier Name</f:facet>
+                        #{p.supplierName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Buyer Name</f:facet>
+                        #{p.buyerName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                        #{p.status}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Approved Date</f:facet>
+                        #{p.createdDate}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Generate Invoice?</f:facet>
+                    <h:selectBooleanCheckbox id="generateid" value="#{searchBean.invgenerate}" onclick="#{searchBean.createSingleInvoice(p.POID)}"/>
+                </h:column>
+                </h:dataTable>
+            <br/><br/>
+            <h:commandButton value = "Generate Invoice" action="#{searchBean.generateInvoice(p.POID)}" styleClass="InvoiceButton"></h:commandButton><h:commandButton value = "Generate AllInvoice" action="#{searchBean.generateAllInvoice()}" styleClass="InvoiceAllButton"></h:commandButton>
+         </h:form>
+    </h:body>
+</html>

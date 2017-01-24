@@ -1,0 +1,177 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 26, 2016, 6:30:50 PM
+    Author     : SwathiReddy
+*/
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 26, 2016, 5:14:36 PM
+    Author     : SwathiReddy
+*/
+        .contentPage
+        {
+          left: 100px;
+          
+          background-image: url("..//..//resources//css//images//446718_myagkie_legkie_svetlye_1680x1050_(www.GetBg.net).jpg")
+               
+         }
+         
+         #displayallBody
+         {
+            padding-left: 100px;
+            background-image: url("..//..//resources//css//images//446718_myagkie_legkie_svetlye_1680x1050_(www.GetBg.net).jpg")
+         }
+         
+         #buyerBody
+         {
+            background-image: url("..//..//resources//css//images//446718_myagkie_legkie_svetlye_1680x1050_(www.GetBg.net).jpg")
+         }
+         
+         #loginBody
+         {
+            background-image: url("..//..//resources//css//images//446718_myagkie_legkie_svetlye_1680x1050_(www.GetBg.net).jpg")
+         }
+         
+          #invoiceBody
+         {
+            padding-left: 200px;
+            background-image: url("..//..//resources//css//images//446718_myagkie_legkie_svetlye_1680x1050_(www.GetBg.net).jpg")
+         }
+         .displayallTable
+         {
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+            background-color: white;
+         }
+         
+         .displayallHeader
+         {
+            text-align:center;
+            background:none repeat scroll 0 0 whitesmoke;
+            border-bottom:1px solid #000000;  
+            column-width: 200px;
+         }
+        #H1title
+        {
+                align-content: center;
+                color: darkmagenta;
+                height: 50px; 
+                padding-left:500px;
+        }
+        
+        #displayallTitle
+        {
+                align-content: center;
+                color: white;
+                height: 50px; 
+                margin-right:  100px;
+                
+               
+        }
+        
+        .RowallStyle
+        {
+            padding: 20px;
+            text-align: center;
+            font-family: sans-serif;
+           
+        }
+        
+        .ColallStyle
+        {
+             padding: 20px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        
+        
+        #SearchTable
+        {
+            padding-left:350px; 
+            border-bottom-width: 20px ; 
+            border: transparent
+        }
+        
+        .dataTableStyle
+        {
+            margin-left: 50px;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+            
+            
+        }
+        
+        
+        .HeaderStyle
+        {
+            text-align:center;
+            background:none repeat scroll 0 0 lavenderblush;
+            border-bottom:1px solid #000000;  
+            column-width: 200px;
+           
+        }
+        .RowStyle
+        {
+            padding: 20px;
+            text-align: center;
+            font-family: sans-serif;
+           
+        }
+        
+        .ColStyle
+        {
+             padding: 20px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        
+        .button
+        {
+           background-color: white; 
+           margin-left:700px
+        }
+        
+        .processButton
+        {
+           background-color: white; 
+           margin-left:600px
+        }
+       
+          .processButton1
+        {
+           background-color: white; 
+           margin-left:100px
+        }
+      
+        .styleButtonAll
+        {
+            text-align:center;
+            background:lavenderblush;
+            font-weight: bold;
+            color: black;
+            column-width: 200px;
+        }
+        
+        
+        .InvoiceButton
+        {
+           background-color: white; 
+           margin-left: 500px
+             
+        }
+        
+         .InvoiceAllButton
+        {
+           background-color: white; 
+           margin-left:100px
+        }

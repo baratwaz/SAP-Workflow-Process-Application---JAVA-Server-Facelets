@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Procurement Process</title>
+        <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+    </h:head>
+    <h:body id="buyerBody">
+         <h:form>
+             <div align="right" style="background-color: antiquewhite; font-size: 25px">
+                 <h:outputLabel value="Welcome #{login.username}," style="margin-right: 20px"/>
+                 <h:commandLink value="Logout" action="#{order.logout()}" style="color: lightskyblue"/>
+             </div>
+            <div style="background-color: antiquewhite;height:50px;"> <span style=" font-size: 30px;font-family: verdana;text-align:center;margin-left: 50px">Welcome to Buyer Page</span></div>
+        <br></br>
+        <h:panelGrid columns="4" style="height: 96px;width:800px;margin-left: 20px">
+             <h:outputLabel for="suppliername" value="Select a Supplier: " />
+             <h:selectOneMenu id="supplier_id" value="#{order.supplier}"  style="width:150px"  >      
+                <f:selectItem itemLabel="Select Supplier" itemValue="SelectSupplier"  />
+                <f:selectItems value="#{order.get_SupplierList()}"/>
+            </h:selectOneMenu>
+             <h:outputLabel for="product_typename" value="Select Material/Service: " />
+             <h:selectOneMenu id="product_type_id" value="#{order.product_type}" style="width:150px">
+                <f:selectItem itemLabel="Select Item" itemValue="SelectItem" noSelectionOption="true" />
+                <f:selectItem itemLabel="Service" itemValue="Service" noSelectionOption="true" />
+                <f:selectItem itemLabel="Material" itemValue="Material" noSelectionOption="true" />   
+            </h:selectOneMenu>  
+        </h:panelGrid>
+        <br></br>
+        <h:panelGrid columns="4" style="height: 96px;width:700px;margin-left: 20px">
+            <h:outputLabel for="supplier" value="Enter the Product to be Searched:" />
+            <h:inputText value="#{order.product_Searched}"></h:inputText>
+            <h:commandButton id="Search" value="Search" action="#{order.Search()}"/>
+            <h:selectOneMenu id="sort" value="#{order.sortby}"  style="width:100px">      
+                <f:selectItem itemLabel="Sortby" itemValue="sortby" />
+                 <f:selectItem itemLabel="Sortby:Name" itemValue="sortname"  />
+                  <f:selectItem itemLabel="Sortby:Price" itemValue="sortprice"  />
+                  <f:ajax listener="#{order.sorting()}"  render="product"/>
+            </h:selectOneMenu>
+        </h:panelGrid>
+        <br/>
+        <h:commandButton id="Add" value="Add to Cart" action="#{order.ChecklistAdd()}" style="margin-left: 20px"/>
+        <h:outputLabel style="margin-left: 1000px;" for="selectall" value="Select All"></h:outputLabel>
+        <h:selectBooleanCheckbox id="selectall" value="#{order.selectall}">
+             <f:ajax listener="#{order.selectall()}"  render="product"/>
+        </h:selectBooleanCheckbox>
+          <div style="margin-top: 30px;">
+              <h:dataTable id="product" value="#{order.result_list}" var="prod" border="1" rendered="#{not empty order.result_list}">
+                    <h:column>
+                     <f:facet name="header">Product Image</f:facet>
+                     <h:graphicImage value="#{prod.item_image}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Product Name</f:facet>
+                        #{prod.item_name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Product Description</f:facet>
+                        #{prod.item_description}
+                    </h:column>
+                  <h:column>
+                      <f:facet name="header">Supplier</f:facet>
+                        #{prod.supplier_name}
+                    </h:column>
+                  <h:column>
+                      <f:facet name="header">Unit Of Measurement</f:facet>
+                        #{prod.item_unitOfMeasurement}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price</f:facet>
+                        $#{prod.item_price}
+                    </h:column>
+                    <h:column>
+                        
+                        <h:selectBooleanCheckbox value="#{prod.checked}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

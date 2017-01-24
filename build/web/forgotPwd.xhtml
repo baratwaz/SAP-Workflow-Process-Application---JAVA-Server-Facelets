@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Forgot Password</title>
+        <h:outputStylesheet library="css" name="StyleSupplierPage.css" />
+        <h1 id="H1title">
+         Forgot Password? 
+        </h1>
+        <p>
+            <h4 style="color:blue white;margin-left: 400px"> Please enter your security code below to reset your password.</h4>
+        </p>
+         <!-- For Bootstrap - Start -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        <scripts>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+         </scripts>
+        <!-- For Bootstrap - End -->
+    </h:head>
+    <h:body id="loginBody">
+        <br></br>
+            <h:form class="form-group" style="min-width: 370px;display: flex; flex-direction: column; align-items: center;">
+                <h:outputText style="font-size:20px;" />
+                UserName:  <h:inputText id="username" required ="true" styleClass="textbox"
+                             requiredMessage="The ID field cannot be empty"
+                        title="Please enter your UserName"
+                        value="#{login.username}"
+                 validatorMessage="The ID must be between 3 and 20 characters">
+                    <f:validateLength maximum="20" minimum="3" />
+                </h:inputText>
+                <h:outputText style="font-size:20px; padding-top: 10px;" />
+                Security Question: Home City? 
+            <h:inputText id="security" required ="true" styleClass="textbox"
+                          requiredMessage="The security code field cannot be empty"
+                          title="Please enter your security code" value="#{login.securityCode}"></h:inputText>
+                <h:outputText style="font-size:20px;"/>
+                Enter your New Password: 
+            <h:inputSecret id="psw" required ="true" styleClass="textbox"
+                          requiredMessage="The password field cannot be empty"
+                          title="Please enter your password" value="#{login.newpassword}">               
+                </h:inputSecret>
+            <div style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+                <br></br><br></br>
+                <h:commandButton id="change" action="#{login.forgetpwd()}" value="change password" class="btn btn-primary"
+                                              />
+                <td style="margin-left: 50px"><h:outputLabel value="#{login.forgotpassword}"/></td>
+                <td style="margin-left: 50px"><h:outputLabel value="#{login.isvalidusername()}"/></td>
+            </div>
+                </h:form>
+    </h:body>
+</html>
+
